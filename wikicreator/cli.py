@@ -22,44 +22,6 @@ from bs4 import BeautifulSoup as bs
 from cookiecutter.main import cookiecutter
 
 
-@click.command()
-@click.option('--openfile/--no_openfile',
-              '-o/-n', default=False,
-              help='Open in browser')
-@click.option('--serve/--no_serve',
-              '-s/-t', default=False,
-              help='Serve up the file')
-@click.option('--init/--no_init', '-i/-j',
-              default=False,
-              help='Initialize a wikicreator project')
-def main(openfile, serve, init):
-    if init:
-        cookiecutter('https://MatanSilver@bitbucket.org/' +
-                     'MatanSilver/cookiecutter-wikicreator.git')
-    else:
-        generate_files()
-        if serve:
-            url = "localhost:8080/output.html"
-            server_thread = threading.Thread(target=server_worker)
-            files_thread = threading.Thread(target=files_worker)
-            server_thread.daemon = True
-            files_thread.daemon = True
-            server_thread.start()
-            files_thread.start()
-            if openfile:
-                webbrowser.open_new_tab(url)
-            try:
-                while(True):
-                    time.sleep(1)
-            except KeyboardInterrupt:
-                print ("Exiting")
-                sys.exit(1)
-
-
-if __name__ == "__main__":
-    main()
-
-
 def find_free_port():
     s = socket.socket()
     s.bind(('', 0))
@@ -156,5 +118,44 @@ def files_worker():
         generate_files()
         time.sleep(1)
     pass
+
+
+@click.command()
+@click.option('--openfile/--no_openfile',
+              '-o/-n', default=False,
+              help='Open in browser')
+@click.option('--serve/--no_serve',
+              '-s/-t', default=False,
+              help='Serve up the file')
+@click.option('--init/--no_init', '-i/-j',
+              default=False,
+              help='Initialize a wikicreator project')
+def main(openfile, serve, init):
+    if init:
+        cookiecutter('https://MatanSilver@bitbucket.org/' +
+                     'MatanSilver/cookiecutter-wikicreator.git')
+    else:
+        generate_files()
+        if serve:
+            url = "localhost:8080/output.html"
+            server_thread = threading.Thread(target=server_worker)
+            files_thread = threading.Thread(target=files_worker)
+            server_thread.daemon = True
+            files_thread.daemon = True
+            server_thread.start()
+            files_thread.start()
+            if openfile:
+                webbrowser.open_new_tab(url)
+            try:
+                while(True):
+                    time.sleep(1)
+            except KeyboardInterrupt:
+                print ("Exiting")
+                sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
+
 
 sys.exit(0)
