@@ -5,6 +5,7 @@ import yaml
 import markdown
 import sys
 import webbrowser
+import os
 try:
     import SimpleHTTPServer
 except:
@@ -81,7 +82,9 @@ def check_config(categories, active_exists):
 
 
 def generate_files():
-    config = open('config.yaml')
+    cwd = os.getcwd()
+    filepath = os.path.join(cwd, 'config.yaml')
+    config = open(filepath)
     dataMap = yaml.safe_load(config)
     config.close()
     if check_config(dataMap, False) == 0:
@@ -106,6 +109,7 @@ def generate_files():
 def server_worker():
     """thread worker function"""
     PORT = find_free_port()
+    print "port: " + str(PORT)
     Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
     httpd = SocketServer.TCPServer(("", PORT), Handler)
     print ("serving at localhost:" + str(PORT) + "/output.html")
@@ -131,9 +135,8 @@ def files_worker():
               default=False,
               help='Initialize a wikicreator project')
 def main(openfile, serve, init):
-    print "swag"
     if init:
-        cookiecutter('https://MatanSilver@bitbucket.org/' +
+        cookiecutter('https://github.com/' +
                      'MatanSilver/cookiecutter-wikicreator.git')
     else:
         generate_files()
