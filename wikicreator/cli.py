@@ -131,6 +131,7 @@ def files_worker():
               default=False,
               help='Initialize a wikicreator project')
 def __main__(openfile, serve, init):
+    print "swag"
     if init:
         cookiecutter('https://MatanSilver@bitbucket.org/' +
                      'MatanSilver/cookiecutter-wikicreator.git')
