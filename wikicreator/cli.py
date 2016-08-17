@@ -130,7 +130,7 @@ def files_worker():
 @click.option('--init/--no_init', '-i/-j',
               default=False,
               help='Initialize a wikicreator project')
-def main(openfile, serve, init):
+def __main__(openfile, serve, init):
     if init:
         cookiecutter('https://MatanSilver@bitbucket.org/' +
                      'MatanSilver/cookiecutter-wikicreator.git')
@@ -155,7 +155,7 @@ def main(openfile, serve, init):
 
 
 if __name__ == "__main__":
-    main()
+    __main__()
 
 
 sys.exit(0)
