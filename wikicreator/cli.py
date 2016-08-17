@@ -158,10 +158,3 @@ def main(openfile, serve, init):
 if __name__ == "__main__":
     main()
 
-
-def swag():
-    print "swag"
-
-print "stuff"
-
-sys.exit(0)
