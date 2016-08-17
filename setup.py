@@ -26,7 +26,7 @@ test_requirements = [
 
 setup(
     name='wikicreator',
-    version='0.4.4',
+    version='0.4.5',
     description="Python Boilerplate contains all the boilerplate you need to create a Python package.",
     long_description=readme + '\n\n' + history,
     author="Matan Silver",
