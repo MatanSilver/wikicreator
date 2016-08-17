@@ -130,7 +130,7 @@ def files_worker():
 @click.option('--init/--no_init', '-i/-j',
               default=False,
               help='Initialize a wikicreator project')
-def __main__(openfile, serve, init):
+def main(openfile, serve, init):
     print "swag"
     if init:
         cookiecutter('https://MatanSilver@bitbucket.org/' +
@@ -156,7 +156,12 @@ def __main__(openfile, serve, init):
 
 
 if __name__ == "__main__":
-    __main__()
+    main()
 
+
+def swag():
+    print "swag"
+
+print "stuff"
 
 sys.exit(0)

@@ -39,7 +39,7 @@ setup(
                  'wikicreator'},
     entry_points={
         'console_scripts': [
-            'wikicreator=wikicreator.cli:main'
+            'wikicreator=wikicreator.cli:swag'
         ]
     },
     include_package_data=True,
