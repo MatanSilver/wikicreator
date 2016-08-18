@@ -42,7 +42,8 @@ def main(openfile, serve, init):
         if serve:
             PORT = find_free_port()
             url = "localhost:" + str(PORT) + "/output.html"
-            server_thread = threading.Thread(target=server_worker, args=(PORT,))
+            server_thread = threading.Thread(target=server_worker,
+                                             args=(PORT,))
             files_thread = threading.Thread(target=files_worker)
             server_thread.daemon = True
             files_thread.daemon = True
