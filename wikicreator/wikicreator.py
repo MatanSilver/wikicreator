@@ -59,6 +59,7 @@ def create_sidebar(categories):
             sidebar_content += create_sidebar(category['categories']) + '</ul>\n</div>'
     return sidebar_content
 
+
 def check_config(categories, active_exists):
     for category in categories:
         if (not active_exists) and ('active' in category and category['active']):

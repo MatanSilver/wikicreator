@@ -1,40 +1,13 @@
-===============================
 wikicreator
-===============================
 
+Wikicreator is a static site generator written in python.
+It was originally created or VirZOOM, Inc.so to ease updating the manual pages.
+There are currently no theming capabilities unless you actually clone this
+repo and modify the templates used. The structure of the default site is such
+that if you add entries to the config.yaml file and then write corresponding
+document.md files in your project root, the pages will appear in the rendered
+sidebar. The resulting page is a single html file and accompanying css that can
+be served by a CDN.
 
-.. image:: https://img.shields.io/pypi/v/wikicreator.svg
-        :target: https://pypi.python.org/pypi/wikicreator
-
-.. image:: https://img.shields.io/travis/MatanSilver/wikicreator.svg
-        :target: https://travis-ci.org/MatanSilver/wikicreator
-
-.. image:: https://readthedocs.org/projects/wikicreator/badge/?version=latest
-        :target: https://wikicreator.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
-
-.. image:: https://pyup.io/repos/github/MatanSilver/wikicreator/shield.svg
-     :target: https://pyup.io/repos/github/MatanSilver/wikicreator/
-     :alt: Updates
-
-
-Python Boilerplate contains all the boilerplate you need to create a Python package.
-
-
-* Free software: MIT license
-* Documentation: https://wikicreator.readthedocs.io.
-
-
-Features
---------
-
-* TODO
-
-Credits
----------
-
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
-
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
-
+The project was scaffolded using the cookiecutter package from pypi. Using the
+--init flag will use the cookiecutter-wikicreator repo to create a skeleton site.
