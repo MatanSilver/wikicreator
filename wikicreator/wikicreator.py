@@ -2,6 +2,7 @@
 import yaml
 import markdown
 import os
+import shutil
 try:
     import SimpleHTTPServer
 except:
@@ -92,7 +93,7 @@ def generate_files():
                                           tab_content=tab_content)
         soup = bs(htmlcontent, 'html.parser')  # make BeautifulSoup
         prettyHTML = soup.prettify()   # prettify the html
-        output = open('output.html', 'w')
+        output = open('public/index.html', 'w')
         output.write(prettyHTML)
         output.close()
         # print ("files generated")
@@ -105,7 +106,7 @@ def server_worker(PORT):
     """thread worker function"""
     Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
     httpd = SocketServer.TCPServer(("", PORT), Handler)
-    print ("serving at localhost:" + str(PORT) + "/output.html")
+    print ("serving at localhost:" + str(PORT) + "/index.html")
     httpd.serve_forever()
     pass
 

@@ -41,7 +41,7 @@ def main(openfile, serve, init):
         generate_files()
         if serve:
             PORT = find_free_port()
-            url = "localhost:" + str(PORT) + "/output.html"
+            url = "localhost:" + str(PORT) + "/index.html"
             server_thread = threading.Thread(target=server_worker,
                                              args=(PORT,))
             files_thread = threading.Thread(target=files_worker)
