@@ -86,7 +86,7 @@ def generate_files():
     if check_config(dataMap, False) == 0:
         env = Environment()
         env.loader = FileSystemLoader('.')
-        wikitemplate = env.get_template('wikitemplate.html')
+        wikitemplate = env.get_template('templates/wikitemplate.html')
         tab_content = create_tabpane(dataMap)
         sidebar_content = create_sidebar(dataMap)
         htmlcontent = wikitemplate.render(sidebar_content=sidebar_content,
@@ -106,7 +106,7 @@ def server_worker(PORT):
     """thread worker function"""
     Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
     httpd = SocketServer.TCPServer(("", PORT), Handler)
-    print ("serving at localhost:" + str(PORT) + "/index.html")
+    print ("serving at localhost:" + str(PORT) + "/public/index.html")
     httpd.serve_forever()
     pass
 
