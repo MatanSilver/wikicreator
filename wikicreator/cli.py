@@ -13,14 +13,11 @@ except:
     import socketserver as SocketServer
 import threading
 import time
-from jinja2 import FileSystemLoader
-from jinja2.environment import Environment
-from bs4 import BeautifulSoup as bs
+# from jinja2 import FileSystemLoader
+# from jinja2.environment import Environment
+# from bs4 import BeautifulSoup as bs
 from cookiecutter.main import cookiecutter
-from wikicreator import (generate_files,
-                         find_free_port,
-                         files_worker,
-                         server_worker)
+from wikicreator import Generator
 
 
 @click.command()
@@ -38,13 +35,14 @@ def main(openfile, serve, init):
         cookiecutter('https://github.com/' +
                      'MatanSilver/cookiecutter-wikicreator.git')
     else:
-        generate_files()
+        gen = Generator()
+        gen.generate_files()
         if serve:
-            PORT = find_free_port()
+            PORT = gen.find_free_port()
             url = "localhost:" + str(PORT) + "/index.html"
-            server_thread = threading.Thread(target=server_worker,
+            server_thread = threading.Thread(target=gen.server_worker,
                                              args=(PORT,))
-            files_thread = threading.Thread(target=files_worker)
+            files_thread = threading.Thread(target=gen.files_worker)
             server_thread.daemon = True
             files_thread.daemon = True
             server_thread.start()
