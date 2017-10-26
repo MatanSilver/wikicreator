@@ -20,7 +20,7 @@ from bs4 import BeautifulSoup as bs
 
 class Generator():
 
-    def find_free_port():
+    def find_free_port(self):
         s = socket.socket()
         s.bind(('', 0))
         return s.getsockname()[1]
@@ -99,8 +99,9 @@ class Generator():
             print("config check failed")
             return 1
 
-    def server_worker(PORT):
+    def server_worker(self, PORT):
         """thread worker function"""
+        #os.chdir("public")
         Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
         httpd = SocketServer.TCPServer(("", PORT), Handler)
         print ("serving at localhost:" + str(PORT) + "/public/index.html")

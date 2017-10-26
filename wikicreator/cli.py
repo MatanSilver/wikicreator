@@ -2,6 +2,7 @@
 
 import click
 import sys
+import os
 import webbrowser
 try:
     import SimpleHTTPServer
@@ -17,8 +18,12 @@ import time
 # from jinja2.environment import Environment
 # from bs4 import BeautifulSoup as bs
 from cookiecutter.main import cookiecutter
-from wikicreator import Generator
-
+# from wikicreator import Generator
+sys.path.append(os.getcwd())
+try:
+    from generators import Generator
+except:
+    from wikicreator import Generator
 
 @click.command()
 @click.option('--openfile/--no_openfile',
@@ -36,10 +41,10 @@ def main(openfile, serve, init):
                      'MatanSilver/cookiecutter-wikicreator.git')
     else:
         gen = Generator()
-        gen.generate_files()
+        gen.generate()
         if serve:
             PORT = gen.find_free_port()
-            url = "localhost:" + str(PORT) + "/index.html"
+            url = "localhost:" + str(PORT) + "/public/"
             server_thread = threading.Thread(target=gen.server_worker,
                                              args=(PORT,))
             files_thread = threading.Thread(target=gen.files_worker)

@@ -34,9 +34,11 @@ setup(
     url='https://github.com/MatanSilver/wikicreator',
     packages=[
         'wikicreator',
+        'tests',
     ],
-    package_dir={'wikicreator':
-                 'wikicreator'},
+    #packages=find_packages(),
+    #package_dir={'wikicreator':
+    #             'wikicreator'},
     entry_points={
         'console_scripts': [
             'wikicreator=wikicreator.cli:main'
