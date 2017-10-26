@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open('README.rst') as readme_file:
     readme = readme_file.read()
@@ -32,13 +32,13 @@ setup(
     author="Matan Silver",
     author_email='matansilver@gmail.com',
     url='https://github.com/MatanSilver/wikicreator',
-    packages=[
-        'wikicreator',
-        'tests',
-    ],
-    #packages=find_packages(),
-    #package_dir={'wikicreator':
-    #             'wikicreator'},
+    #packages=[
+    #    'wikicreator',
+    #    'tests',
+    #],
+    packages=find_packages(),
+    package_dir={'wikicreator':
+                 'wikicreator'},
     entry_points={
         'console_scripts': [
             'wikicreator=wikicreator.cli:main'

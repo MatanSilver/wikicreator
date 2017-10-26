@@ -23,7 +23,7 @@ sys.path.append(os.getcwd())
 try:
     from generators import Generator
 except:
-    from wikicreator import Generator
+    from wikicreator.default import Generator
 
 @click.command()
 @click.option('--openfile/--no_openfile',

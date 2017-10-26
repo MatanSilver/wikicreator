@@ -30,7 +30,7 @@ class Generator():
             if (not active_exists) and ('active' in category and category['active']):
                 active_exists = True
             elif not ('file' in category and category['file']) and not ('categories' in category and category['categories']):
-                print ("Please use either a file or categories in config")
+                print("Please use either a file or categories in config")
                 return 1
             elif 'categories' in category and category['categories']:
                 return self.check_config(category['categories'], active_exists)
