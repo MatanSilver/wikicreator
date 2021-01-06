@@ -16,7 +16,8 @@ requirements = [
     'Jinja2',
     'markdown',
     'requests',
-    'cookiecutter'
+    'cookiecutter',
+    'python-frontmatter'
     # TODO: put package requirements here
 ]
 

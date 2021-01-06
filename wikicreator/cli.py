@@ -25,6 +25,7 @@ try:
 except:
     from wikicreator.default import Generator
 
+
 @click.command()
 @click.option('--openfile/--no_openfile',
               '-o/-n', default=False,
